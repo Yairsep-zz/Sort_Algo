@@ -19,6 +19,7 @@ public:
 
     vector<int> list;
     virtual vector<int> sort();
+    void printArray(int arr[], int size);
 
 };
 
@@ -26,9 +27,11 @@ class Merge_Sort : public Sort_Algo  {
 
 public:
 
-    Merge_Sort(vector<int> list);
-    vector<int> list;
-    virtual vector<int> sort();
+    Merge_Sort(int arr[]);
+    virtual void sort(int l , int r);
+    void merge(int l , int m , int r);
+
+    int *arr;
 
 };
 
@@ -36,20 +39,23 @@ class Quick_Sort : public Sort_Algo {
 
 public:
 
-    Quick_Sort(vector<int> list);
-    vector<int> list;
-    virtual vector<int> sort();
+    Quick_Sort(int arr[]);
+    virtual void sort(int low, int high);
+    void swap(int* a, int* b);
+    int partition (int low, int high);
 
+    int *arr;
 };
 
 class Bubble_Sort : public Sort_Algo {
 
 public:
 
-    Bubble_Sort(vector<int> list);
-    vector<int> list;
-    virtual vector<int> sort();
+    Bubble_Sort(int arr[]);
+    void swap(int* a, int* b);
+    virtual void sort(int n);
 
+    int *arr;
 };
 
 

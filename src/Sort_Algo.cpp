@@ -5,6 +5,7 @@
 #include "../include/Sort_Algo.h"
 #include <iostream>
 #include <fstream>
+
 using namespace std;
 
 
@@ -29,6 +30,22 @@ void Sort_Algo::printArray(int *arr, int size) {
     for (i=0; i < size; i++)
         printf("%d ", arr[i]);
     printf("\n");
+}
+
+void Sort_Algo::make_output_file(string output_file , int *arr, int size) {
+
+    string path = "../data/" + output_file;
+    ofstream output_f (path);
+
+    if (output_f.is_open())
+    {
+        for(int count = 0; count < size; count ++){
+            output_f << arr[count] << endl;
+        }
+        output_f.close();
+    }
+    else cout << "Unable to open file";
+
 }
 
 

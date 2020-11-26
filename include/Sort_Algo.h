@@ -6,6 +6,8 @@
 #define SORTING_SORT_ALGO_H
 #include <string>
 #include <vector>
+#include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -20,6 +22,7 @@ public:
     vector<int> list;
     virtual vector<int> sort();
     void printArray(int arr[], int size);
+    void make_output_file(string output_file , int arr[], int size);
 
 };
 

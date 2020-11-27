@@ -1,4 +1,4 @@
-Sorting Algorithms implementation
+###### Sorting Algorithms implementation
 
 All 3 kinds of sorting are inherited from Sort_Algo base class.
 

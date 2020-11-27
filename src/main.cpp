@@ -11,53 +11,47 @@ using namespace std::chrono;
 
 
 
-void Merge_Call(int merge_arr[] , int size){
-
-    // Get starting timepoint
-    auto start = high_resolution_clock::now();
+void Sort_Call(int input_arr[] , int size , int flag){
 
     //Merge Sort
-    Merge_Sort *merg = new Merge_Sort(merge_arr);
-    merg->sort( 0 , size-1);
-    auto stop = high_resolution_clock::now();
-    auto merge_duration = duration_cast<milliseconds>(stop - start);
-    cout << "Time taken by Merge Sort function: " << merge_duration.count() << " milliseconds" << endl;
+    if (flag == 0){
+        auto start = high_resolution_clock::now();
+        Merge_Sort *merg = new Merge_Sort(input_arr);
+        merg->sort( 0 , size-1);
+        auto stop = high_resolution_clock::now();
+        auto merge_duration = duration_cast<milliseconds>(stop - start);
+        cout << "Time taken by Merge Sort function: " << merge_duration.count() << " milliseconds" << endl;
 
-    string output_file_name = "merge_output.txt";
-    merg->make_output_file(output_file_name , merge_arr , size);
-//    cout << "Merge Sort:" << endl;
-//    merg->printArray(merge_arr , size);
+        string output_file_name = "merge_output.txt";
+        merg->make_output_file(output_file_name , input_arr , size);
+    }
+    //Quick Sort
+    else if (flag ==1){
+        auto start = high_resolution_clock::now();
+        Quick_Sort *quick = new Quick_Sort(input_arr);
+        quick->sort( 0 , size-1);
+        auto stop = high_resolution_clock::now();
+        auto quick_duration = duration_cast<milliseconds>(stop - start);
+        cout << "Time taken by Quick Sort function: " << quick_duration.count() << " milliseconds" << endl;
+        string output_file_name = "quick_output.txt";
+        quick->make_output_file(output_file_name , input_arr , size);
+    }
+    //Buuble Sort
+    else if (flag ==2){
+        auto start = high_resolution_clock::now();
+        Bubble_Sort *bubble = new Bubble_Sort(input_arr);
+        bubble->sort(size -1);
+        auto stop = high_resolution_clock::now();
+        auto bubble_duration = duration_cast<milliseconds>(stop - start);
+        cout << "Time taken by Bubble Sort function: " << bubble_duration.count() << " milliseconds" << endl;
+        string output_file_name = "bubble_output.txt";
+        bubble->make_output_file(output_file_name , input_arr , size);
+    }
+
 
 }
 
-void Quick_Call(int quick_arr[] , int size){
 
-    auto start = high_resolution_clock::now();
-    Quick_Sort *quick = new Quick_Sort(quick_arr);
-    quick->sort( 0 , size-1);
-    auto stop = high_resolution_clock::now();
-    auto quick_duration = duration_cast<milliseconds>(stop - start);
-    cout << "Time taken by Quick Sort function: " << quick_duration.count() << " milliseconds" << endl;
-    string output_file_name = "quick_output.txt";
-    quick->make_output_file(output_file_name , quick_arr , size);
-//    cout << "Quick Sort:" << endl;
-//    quick->printArray(merge_arr , input.size());
-
-}
-
-void Bubble_Call(int bubble_arr[] , int size){
-
-    auto start = high_resolution_clock::now();
-    Bubble_Sort *bubble = new Bubble_Sort(bubble_arr);
-    bubble->sort(size -1);
-    auto stop = high_resolution_clock::now();
-    auto bubble_duration = duration_cast<milliseconds>(stop - start);
-    cout << "Time taken by Bubble Sort function: " << bubble_duration.count() << " milliseconds" << endl;
-    string output_file_name = "bubble_output.txt";
-    bubble->make_output_file(output_file_name , bubble_arr , size);
-//    cout << "Bubble Sort:" << endl;
-//    bubble->printArray(merge_arr , input.size());
-}
 
 int main() {
 
@@ -82,9 +76,9 @@ int main() {
     copy(input.begin(), input.end(), bubble_arr);
 
     //call sort functions
-    Merge_Call(merge_arr , input.size());
-    Quick_Call(quick_arr , input.size());
-//    Bubble_Call(bubble_arr ,input.size());
+    Sort_Call(merge_arr , input.size() , 0);
+    Sort_Call(quick_arr , input.size() , 1);
+    Sort_Call(bubble_arr , input.size() , 2);
 
     File_Input.close();
 

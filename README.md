@@ -9,3 +9,4 @@ Instructions:
 3. Run main function:
     In the console the execution time in milliseconds of each sorting algorithm will be printed.
     3 output files will be added under data dir with the expected output.
+//

@@ -25,6 +25,7 @@ void Sort_Call(int input_arr[] , int size , int flag){
 
         string output_file_name = "merge_output.txt";
         merg->make_output_file(output_file_name , input_arr , size);
+        delete (merg);
     }
 
     //Quick Sort
@@ -37,6 +38,7 @@ void Sort_Call(int input_arr[] , int size , int flag){
         cout << "Time taken by Quick Sort function: " << quick_duration.count() << " milliseconds" << endl;
         string output_file_name = "quick_output.txt";
         quick->make_output_file(output_file_name , input_arr , size);
+        delete (quick);
     }
 
     //Bubble Sort
@@ -49,6 +51,7 @@ void Sort_Call(int input_arr[] , int size , int flag){
         cout << "Time taken by Bubble Sort function: " << bubble_duration.count() << " milliseconds" << endl;
         string output_file_name = "bubble_output.txt";
         bubble->make_output_file(output_file_name , input_arr , size);
+        delete (bubble);
     }
 }
 

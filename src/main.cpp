@@ -1,16 +1,17 @@
 #include <iostream>
-
 #include "../include/Sort_Algo.h"
-#include <iostream>
-#include <fstream>
 #include <sstream>
 #include <chrono>
 
 using namespace std;
 using namespace std::chrono;
 
-
-
+/**
+ *Calling each sorting algorithm depending on the flag given
+ *@param input_arr - the input array to be sorted
+ *       size - input_arr size
+ *       flag - which type of sort: 0 - merge sort , 1 - quick sort , 2 - bubble sort
+*/
 void Sort_Call(int input_arr[] , int size , int flag){
 
     //Merge Sort
@@ -25,6 +26,7 @@ void Sort_Call(int input_arr[] , int size , int flag){
         string output_file_name = "merge_output.txt";
         merg->make_output_file(output_file_name , input_arr , size);
     }
+
     //Quick Sort
     else if (flag ==1){
         auto start = high_resolution_clock::now();
@@ -36,7 +38,8 @@ void Sort_Call(int input_arr[] , int size , int flag){
         string output_file_name = "quick_output.txt";
         quick->make_output_file(output_file_name , input_arr , size);
     }
-    //Buuble Sort
+
+    //Bubble Sort
     else if (flag ==2){
         auto start = high_resolution_clock::now();
         Bubble_Sort *bubble = new Bubble_Sort(input_arr);
@@ -47,11 +50,12 @@ void Sort_Call(int input_arr[] , int size , int flag){
         string output_file_name = "bubble_output.txt";
         bubble->make_output_file(output_file_name , input_arr , size);
     }
-
-
 }
 
-
+/**
+ *Main function, initiating vector from the text file input , converts it to array and call the 3 different sort functions
+ *@param File_Input - the text input file
+*/
 
 int main() {
 
@@ -67,12 +71,10 @@ int main() {
         input.push_back(x);
     }
 
-    //Initiating arrays
-    int merge_arr[input.size()];
+    //Converting vector to 3 arrays
+    int merge_arr[input.size()]; int quick_arr[input.size()]; int bubble_arr[input.size()];
     copy(input.begin(), input.end(), merge_arr);
-    int quick_arr[input.size()];
     copy(input.begin(), input.end(), quick_arr);
-    int bubble_arr[input.size()];
     copy(input.begin(), input.end(), bubble_arr);
 
     //call sort functions
